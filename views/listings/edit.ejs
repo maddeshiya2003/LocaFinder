@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerPlate") %>
+<body>
+
+    <br>
+    
+    <form class="rounded border border-dark p-3 needs-validation col-8 offset-2" action="/listings/<%=listing._id%>?_method=put" method="post" novalidate enctype="multipart/form-data">
+        <h3> Edit Your Listing </h3>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title : </label>
+            <input type="text" name="listing[title]" value="<%=listing.title%>" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good title!
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Discription : </label>
+            <textarea name="listing[description]" cols="50" rows="4" class="form-control" required> <%=listing.description%> </textarea>
+        </div>
+
+        <div class="mb-3 form-floating">
+            <select name="listing[category]" class="form-select" id="floatingSelect">
+                <option value="Trending">Trending</option>
+                <option value="Room">Room</option>
+                <option value="IconicCities">Iconic Cities</option>
+                <option value="Castels">Castels</option>
+                <option value="AmazingPools">Amazing Pools</option>
+                <option value="Mountain">Mountain</option>
+                <option value="Camping">Camping</option>
+                <option value="Farms">Farms</option>
+                <option value="Arctic">Arctic</option>
+            </select>
+            <label for="floatingSelect">Select Your Prefrencee</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price : </label>
+            <input type="number" name="listing[price]" value="<%=listing.price%>" class="form-control" required>
+            <div class="invalid-feedback">
+                Invalid Price!
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image: </label>
+            <input type="file" name="listing[image]" class="form-control" >
+        </div>
+        
+        <div class="mb-3">
+            Original Image : <br>
+            <img src=<%= originalImageUrl %> alt="old image">
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Location : </label>
+            <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" name="listing[country]" value="<%=listing.country%>" class="form-control" required>
+        </div>
+
+        <button class=" btn btn-dark edit-btn">Edit</button>
+        
+    </form>
+    
+</body>
